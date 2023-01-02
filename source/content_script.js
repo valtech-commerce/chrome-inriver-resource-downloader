@@ -1,14 +1,20 @@
-var regexPictureUrl = /url\(\"(.*\/(picture\?id=.+&size=)?)(.*)\"\)/;
+var regexPictureUrl = /^(.*\/api\/assetstorage\/.*\/)[^\/]+$/;
 var regexSupportedImageConfigs = /.*\.(jpg|jpeg|gif|png|tif|tiff)/i;
   
 var resources = [];
 var filenames = [];
 
 // Loop all resource cards. Need to update if inRiver changes HTML structure of workareas
-$("div[entity-type-id='Resource']"+ (scriptOptions.selectedOnly ? ".card-selected" : "") +" div.card-picture").each(function(){
-  var resourceUrl = $(this).css('background-image');
-  var parsedUrl = resourceUrl.match(regexPictureUrl);
-  var resourceFilename = $(this).attr("title");
+$("div[entity-type-id='Resource']"+ (scriptOptions.selectedOnly ? ".card-selected" : "")).each(function(){
+  var resourceDom = $(this).find('img.card-picture');
+  if (resourceDom === undefined) {
+		console.error("Unable to find the inriver card-picture tags. Script is likely too old to work.");	  
+	
+		return false;
+  }
+  
+  var parsedUrl = resourceDom.attr('src').match(regexPictureUrl);
+  var resourceFilename = resourceDom.attr("title");
   var config = "Original";
   
   if(resourceFilename.match(regexSupportedImageConfigs)) {
