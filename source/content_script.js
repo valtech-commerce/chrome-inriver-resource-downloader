@@ -1,5 +1,4 @@
 var regexPictureUrl = /url\(\"(.*\/(picture\?id=.+&size=)?)(.*)\"\)/;
-var regexSupportedImageConfigs = /.*\.(jpg|jpeg|gif|png|tif|tiff)/i;
   
 var resources = [];
 var filenames = [];
@@ -10,7 +9,8 @@ $("div[entity-type-id='Resource']"+ (scriptOptions.selectedOnly ? ".card-selecte
   var parsedUrl = resourceUrl.match(regexPictureUrl);
   var resourceFilename = $(this).attr("title");
   var config = "Original";
-  
+
+  var regexSupportedImageConfigs = new RegExp(scriptOptions.imageFileNameRegex, 'i');
   if(resourceFilename.match(regexSupportedImageConfigs)) {
     config = scriptOptions.imageConfig;
   }
