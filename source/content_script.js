@@ -1,5 +1,4 @@
 var regexPictureUrl = /^(.*\/api\/assetstorage\/.*\/)[^\/]+$/;
-var regexSupportedImageConfigs = /.*\.(jpg|jpeg|gif|png|tif|tiff)/i;
   
 var resources = [];
 var filenames = [];
@@ -16,7 +15,8 @@ $("div[entity-type-id='Resource']"+ (scriptOptions.selectedOnly ? ".card-selecte
   var parsedUrl = resourceDom.attr('src').match(regexPictureUrl);
   var resourceFilename = resourceDom.attr("title");
   var config = "Original";
-  
+
+  var regexSupportedImageConfigs = new RegExp(scriptOptions.imageFileNameRegex, 'i');
   if(resourceFilename.match(regexSupportedImageConfigs)) {
     config = scriptOptions.imageConfig;
   }

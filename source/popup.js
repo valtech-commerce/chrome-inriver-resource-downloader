@@ -50,12 +50,26 @@ function downloadResources(config) {
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
     var selectedOnly = document.getElementById('selected-only');
-    var dropdown = document.getElementById('dropdown');
+    var dropdown = document.getElementById('image-configuration');
     var downloadButton = document.getElementById('download-button');
   
     downloadButton.addEventListener('click', () => {
       downloadButton.disabled = true;
-      downloadResources({imageConfig:dropdown.value, selectedOnly:selectedOnly.checked});
+      downloadResources({imageConfig:dropdown.value, selectedOnly:selectedOnly.checked, imageFileNameRegex: document.getElementById('image-filename-regex').value});
     });
+	
+	dropdown.addEventListener('change', function() {
+		var [selectedOption] = this.selectedOptions;
+		if (selectedOption === undefined) {
+			return;
+		}
+		
+		document.getElementById('image-configuration-custom-input').style.display = selectedOption.id === 'image-configuration-custom-option' ? 'block' : 'none';
+	});
+	
+	document.getElementById('image-configuration-custom-input')
+		.addEventListener('change', function() {		
+			document.getElementById('image-configuration-custom-option').value = this.value;
+		});	
   });
 });
