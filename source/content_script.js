@@ -33,7 +33,7 @@ $("div[entity-type-id='Resource']"+ (scriptOptions.selectedOnly ? ".card-selecte
 	  }
   }
   else {
-	  console.log("Skipping resource "+ resourceFilename +" ("+ resourceUrl +") because the pattern did not match");
+	  console.log("Skipping resource "+ resourceFilename +" because the pattern did not match");
   }
 });
 
