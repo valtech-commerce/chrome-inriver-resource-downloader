@@ -1,26 +1,29 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "inRiver Resource Downloader",
   "description": "This extension allows the user to download all resources from a workarea.",
   "version": "0.4",
 
   "background": {
-    "scripts": ["event.js"],
-    "persistent": false
+    "service_worker": "event.js"
   },
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "icon128.png",
     "default_popup": "popup.html"
   },
   "permissions": [
     "activeTab",
+	"scripting",
     "background",
     "downloads"
+  ],
+  "host_permissions": [
+	"*://*.productmarketingcloud.com/*"
   ]
 }
