@@ -6,7 +6,8 @@
   "version": "0.4",
 
   "background": {
-    "service_worker": "event.js"
+    "service_worker": "event.js",
+    "scripts": ["event.js"]
   },
   "icons": {
     "16": "icon16.png",
