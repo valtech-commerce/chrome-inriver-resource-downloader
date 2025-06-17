@@ -1,17 +1,18 @@
 // This function is called from the popup code
-function downloadImages(config, callback) {
-  chrome.tabs.executeScript(null, {file: "jquery-3.3.1.min.js"}, function(){
-    chrome.tabs.executeScript(null, {code: "var scriptOptions = "+ JSON.stringify(config) + ";"}, function(){
-      chrome.tabs.executeScript(null, {file: "content_script.js"}, function(results){
+function downloadImages(tabId, config, callback) {
+  chrome.scripting.executeScript({target: {tabId: tabId}, files: ["jquery-3.3.1.min.js"]}, function(){
+      chrome.scripting.executeScript({target: {tabId: tabId}, files: ["content_script.js"]}, function(){
+		  chrome.scripting.executeScript({target: {tabId: tabId}, func: config => { return fetchResources(config); }, args: [ config ]}, function(injectionResult){
       
+		var result = injectionResult[0].result;
 		var message = '';
 		
-		if(results[0].length > 0) {
-			message =  'Downloading ' + results[0].length + ' resources...';
-			for(var i = 0; i < results[0].length; i++) {
+		if(result.length > 0) {
+			message =  'Downloading ' + result.length + ' resources...';
+			for(var i = 0; i < result.length; i++) {
 				chrome.downloads.download({
-					url: results[0][i].url,
-					filename: results[0][i].filename
+					url: result[i].url,
+					filename: result[i].filename
 				});
 			}
 		}
@@ -23,3 +24,12 @@ function downloadImages(config, callback) {
     });
   });
 };
+
+chrome.runtime.onMessage.addListener(
+	function(msg) {
+			if(msg.type === 'inriverDownloadResources') {
+					downloadImages(msg.tabId, msg.configuration, (progressionDescription) => {
+						chrome.runtime.sendMessage({type: 'AbsolunetDownloadResourcesProgression', message: progressionDescription, requestId: msg.requestId});
+					});
+			}
+	});

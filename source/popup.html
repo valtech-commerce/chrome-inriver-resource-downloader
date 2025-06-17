@@ -29,16 +29,24 @@
     <h1>inRiver Resource Downloader</h1>
     <div id="container">
 	  <div>
-	  <input type="checkbox" id="selected-only" name="selected-only"></input>
-	  <label for="selected-only">Selected resources only</label>
+		  <input type="checkbox" id="selected-only" name="selected-only"></input>
+		  <label for="selected-only">Selected resources only</label>
 	  </div>
+	  <div>
+		  <label for="filename-regex">Filename regex:</label>
+	  </div>
+	  <div><input type="text" id="image-filename-regex" name="image-filename-regex" value=".*\.(jpg|jpeg|gif|png|tif|tiff)"></input></div>
       <div>Choose image configuration:&nbsp;</div>
-      <select id="dropdown">
-        <option selected value="Original">Original</option>
-        <option value="Preview">Preview</option>
-        <option value="Thumbnail">Thumbnail</option>
-        <option value="SmallThumbnail">SmallThumbnail</option>
-      </select>
+	  <div>
+		  <select id="image-configuration">
+			<option selected value="Original">Original</option>
+			<option value="Preview">Preview</option>
+			<option value="Thumbnail">Thumbnail</option>
+			<option value="SmallThumbnail">SmallThumbnail</option>
+			<option id="image-configuration-custom-option" style="font-style: italic;">Custom</option>
+		  </select>
+		  <input id="image-configuration-custom-input" type="text" style="display:none;" />
+	  </div>
       &nbsp;<button id="download-button">Start Download</button>
     </div>
     <div><p id="results"></p></div>
