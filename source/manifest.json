@@ -4,6 +4,7 @@
   "name": "inRiver Resource Downloader",
   "description": "This extension allows the user to download all resources from a workarea.",
   "version": "0.5",
+  "homepage_url": "https://github.com/valtech-commerce/chrome-inriver-resource-downloader",
 
   "background": {
     "service_worker": "event.js",
