@@ -3,7 +3,7 @@
 
   "name": "inRiver Resource Downloader",
   "description": "This extension allows the user to download all resources from a workarea.",
-  "version": "0.4",
+  "version": "0.5",
 
   "background": {
     "service_worker": "event.js",
@@ -26,5 +26,11 @@
   ],
   "host_permissions": [
 	"*://*.productmarketingcloud.com/*"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{96cc1f98-94d1-4eaa-9b6b-9cdfa4bcf8ba}",
+      "strict_min_version": "109.0"
+    }
+  }
 }
