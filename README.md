@@ -61,10 +61,10 @@ A new popup will show up and you will be able to configure some limited options 
 
 When you are ready, click the `Start Download` button.
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > Your browser may block downloads because it detected multiples download at the same time. Usually, if this happens, the browser will warn you and you will still be able to ask it to continue the operation.
 
-> ![CAUTION]
+> [!CAUTION]
 > It can take some time before you see downloads starting.
 
 ## Notes
