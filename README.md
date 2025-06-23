@@ -19,7 +19,7 @@ The extension needs to stay in the folder. It will stop working if it's moved or
 
 #### Chromium-based browser (Microsoft Edge, Opera, Brave, ...)
 
-The steps are the same as [Google Chrome](#google-chrome) except that the quick url we provide, to where to install the extension, is specific for your browser.
+The steps are the same as [Google Chrome](#google-chrome) except that the quick URL we provide, to where to install the extension, is specific to your browser.
 
 See the table below to know what URL to use instead of [chrome://extensions/](chrome://extensions/):
 
@@ -33,7 +33,7 @@ For other browsers, search for how to install an extension as a developer in you
 
 #### Firefox
 > [!IMPORTANT]
-> Currently, It isn't possible to permanently install it this way. 
+> Currently, it isn't possible to permanently install it this way. 
 
 1. To install, download the source folder on your local drive.
 2. Then follow the Firefox [Loading a temporary extension](https://firefox-source-docs.mozilla.org/devtools-user/about_colon_debugging/index.html#loading-a-temporary-extension) page instruction.
